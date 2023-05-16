@@ -8,7 +8,7 @@ import { ConfigService } from '@nestjs/config';
 import * as argon from 'argon2';
 
 import { PrismaService } from '../prisma/prisma.service';
-import { AuthDto } from './dto';
+import { RegisterDto, LoginDto } from './dto';
 
 @Injectable()
 export class AuthService {
@@ -19,9 +19,10 @@ export class AuthService {
   ) {}
 
   public async signin(
-    dto: AuthDto,
+    dto: LoginDto,
   ): Promise<any> {
     //find the user by email
+    console.log(dto)
     const user =
       await this._prismaService.user.findFirst({
         where: {
@@ -52,18 +53,22 @@ export class AuthService {
   }
 
   public async signup(
-    dto: AuthDto,
+    dto: RegisterDto | any,
   ): Promise<any> {
     //generate the password hash
     const hash = await argon.hash(dto.password);
     //save the new user in the data base
     try {
+      let userData:any = {
+        email: dto.email,
+        hash,
+      }
+      dto.firstName ? userData.firstName = dto.firstName : null
+      dto.lastName ? userData.lastName = dto.lastName : null
       const user =
         await this._prismaService.user.create({
           data: {
-            email: dto.email,
-            // laststName: dto.lastName,
-            hash,
+          ...userData
           },
           // select:{
           //     id: true,

@@ -9,6 +9,10 @@ export class EditUserDto {
   @IsOptional()
   email?: string;
 
+  // @IsString()
+  // @IsOptional()
+  // password?: string;
+
   @IsString()
   @IsOptional()
   firstName?: string;

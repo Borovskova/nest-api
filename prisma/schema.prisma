@@ -19,7 +19,7 @@ model User{
   hash String
 
   firstName String?
-  laststName String?
+  lastName String?
 
   bookmarks Bookmark[]
   

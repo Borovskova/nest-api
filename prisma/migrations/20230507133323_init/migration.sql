@@ -19,7 +19,7 @@ CREATE TABLE "users" (
     "email" TEXT NOT NULL,
     "hash" TEXT NOT NULL,
     "firstName" TEXT,
-    "laststName" TEXT,
+    "lastName" TEXT,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );

@@ -7,7 +7,7 @@ import {
 import * as pactum from 'pactum';
 
 import { AppModule } from '../src/app.module';
-import { AuthDto } from '../src/auth/dto';
+import { RegisterDto } from '../src/auth/dto';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 describe('App e2e', () => {
@@ -36,7 +36,7 @@ describe('App e2e', () => {
     app.close();
   });
   describe('Auth', () => {
-    const dto: AuthDto = {
+    const dto: RegisterDto = {
       email: 'comc@mаo3.pd',
       password: '111',
     };
