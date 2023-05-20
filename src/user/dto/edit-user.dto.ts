@@ -9,9 +9,9 @@ export class EditUserDto {
   @IsOptional()
   email?: string;
 
-  // @IsString()
-  // @IsOptional()
-  // password?: string;
+  @IsString()
+  @IsOptional()
+  password?: string;
 
   @IsString()
   @IsOptional()
@@ -20,4 +20,8 @@ export class EditUserDto {
   @IsString()
   @IsOptional()
   lastName?: string;
+
+  @IsString()
+  @IsOptional()
+  hash?:string | any
 }

@@ -22,7 +22,6 @@ export class AuthService {
     dto: LoginDto,
   ): Promise<any> {
     //find the user by email
-    console.log(dto)
     const user =
       await this._prismaService.user.findFirst({
         where: {
@@ -102,7 +101,7 @@ export class AuthService {
     };
     const secret = this._configService.get('JWT_SECRET');
     const token =  await this._jwtService.signAsync(payload, {
-        expiresIn: '15m',
+        expiresIn: '24h',
         secret: secret
     });
     return {
