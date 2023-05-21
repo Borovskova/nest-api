@@ -79,8 +79,6 @@ export class AuthService {
       //return the saved user token
      return this.signToken(user.id, user.email);
     } catch (error) {
-      // if(error instanceof PrismaClientKnownRequestError){
-      // }
       if (error.code === 'P2002') {
         throw new ForbiddenException(
           'Email already in use!',

@@ -10,7 +10,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class BookmarkService {
   constructor(private _prisma: PrismaService) {}
 
-  getBookmarks(userId: number): any {
+  public getBookmarks(userId: number): any {
     return this._prisma.bookmark.findMany({
       where: {
         userId,
@@ -18,7 +18,7 @@ export class BookmarkService {
     });
   }
 
-   getBookmarkById(
+  public getBookmarkById(
     userId: number,
     bookmarkId: number,
   ): any {
@@ -30,7 +30,7 @@ export class BookmarkService {
     });
   }
 
-  async createBookmark(
+  public async createBookmark(
     userId: number,
     dto: CreateBookmarkDto,
   ): Promise<any> {
@@ -44,7 +44,7 @@ export class BookmarkService {
     return bookmark;
   }
 
-  async editBookmarkById(
+  public async editBookmarkById(
     userId: number,
     bookmarkId: number,
     dto: EditBookmarkDto,
@@ -70,7 +70,7 @@ export class BookmarkService {
     });
   }
 
-  async deleteBookmarkBuId(
+  public async deleteBookmarkBuId(
     userId: number,
     bookmarkId: number,
   ): Promise<any> {

@@ -13,8 +13,8 @@ export class JwtStrategy extends PassportStrategy(
   'jwt',
 ) {
   constructor(
-    config: ConfigService,
-    private prisma: PrismaService,
+    public config: ConfigService,
+    private _prisma: PrismaService,
   ) {
     super({
       jwtFromRequest:
@@ -23,12 +23,12 @@ export class JwtStrategy extends PassportStrategy(
     });
   }
 
-  async validate(payload: {
+  public async validate(payload: {
     sub: number;
     email: string;
   }) {
     const user =
-      await this.prisma.user.findUnique({
+      await this._prisma.user.findUnique({
         where: {
           id: payload.sub,
         },
